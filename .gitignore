@@ -1,0 +1,14 @@
+# emacs backups files
+*~
+
+# emacs "org" files and working copies
+*.org
+*#
+
+# Files set aside
+*.HOLD
+
+# dependencies
+node_modules
+
+# END

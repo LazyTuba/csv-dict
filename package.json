@@ -1,0 +1,23 @@
+{
+  "name": "csv-dict",
+  "version": "1.0.0",
+  "description": "This module represents a CSV file as a DICTIONARY of JS objects",
+  "main": "csv-dict.js",
+  "scripts": {
+    "test": "tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LazyTuba/csv-dict.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LazyTuba/csv-dict/issues"
+  },
+  "homepage": "https://github.com/LazyTuba/csv-dict#readme",
+  "dependencies": {
+    "events": "^1.1.1"
+  }
+}
