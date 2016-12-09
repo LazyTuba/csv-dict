@@ -136,7 +136,6 @@ function CsvDict(params) {
     this.keyFields   = params.keyFields;    // defaults to field 1
     this.selFields   = params.selFields;    // defaults to all fields
     this.delim       = params.delim || ',';
-    this.cb          = params.cb,           // call back
     this.data        = null;
     
     var jsonObjCB = _makeJsonObjCB(this);
