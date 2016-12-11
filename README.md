@@ -15,7 +15,6 @@ a (sort of) database table to represent a small-ish CSV file.
    comma-separated values in the first line of the CSV file are the
    names of the comma-separated 'fields' in each of the succeeding
    'data' lines.
-
 2. The module also assumes and requires that a subset of one or more
    of the fields of the CSV file contain, in each line, values which
    uniquely identify that line.  These 'key field(s)' are used to
