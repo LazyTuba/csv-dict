@@ -11,20 +11,21 @@ a (sort of) database table to represent a small-ish CSV file.
 
 ## Constraints
 
- 1. The module assumes and requires a 'header' line: the
- comma-separated values in the first line of the CSV file are the
- names of the comma-separated 'fields' in each of the succeeding
- 'data' lines.
+1. The module assumes and requires a 'header' line: the
+   comma-separated values in the first line of the CSV file are the
+   names of the comma-separated 'fields' in each of the succeeding
+   'data' lines.
 
- 2. The module also assumes and requires that a subset of one or more
- of the fields of the CSV file contain, in each line, values which
- uniquely identify that line.  These 'key field(s)' are used to derive
- a key for each line of the CSV file by concatenating the value(s) of
- those field(s) to form a string that's unique across all lines.
+2. The module also assumes and requires that a subset of one or more
+   of the fields of the CSV file contain, in each line, values which
+   uniquely identify that line.  These 'key field(s)' are used to
+   derive a key for each line of the CSV file by concatenating the
+   value(s) of those field(s) to form a string that's unique across
+   all lines.
 
 ## USAGE
 
-var CsvDict = require('csv-dict');
+    var CsvDict = require('csv-dict');
     
     var csvdict = new CsvDict({
         tblName    = <string>,                   // deafaults to the file name
