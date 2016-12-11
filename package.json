@@ -1,6 +1,6 @@
 {
   "name": "csv-dict",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This module represents a CSV file as a DICTIONARY of JS objects",
   "main": "csv-dict.js",
   "scripts": {
