@@ -26,7 +26,7 @@ try {
     process.exit(1);
 }
 
-//csvDict.on('tblLoaded', report);
+csvDict.on('tblLoaded', report);
 
 function report(event) {
     console.log("Table named '%s' is loaded", event);
