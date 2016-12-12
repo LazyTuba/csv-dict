@@ -9,7 +9,7 @@ var csvFile = 'tests/stops.txt';
 
 var keyFields = ['stop_id'];
 var selFields = ['stop_id','stop_code','stop_name',
-		 'stop_lat','stop_lon','zone_id'];
+		 'stop_lat','stop_lon'];
 
 try {
     var csvDict = new CsvDict({

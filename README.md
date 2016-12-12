@@ -61,38 +61,36 @@ the value of that field in the line.
 
 ## Usage Example
 
-    var csvdict = require('../csv-dict.js');
+    var CsvDict = require('csv-dict');
     
-    // stop_id,stop_code,stop_name,stop_lat,stop_lon,zone_id
+    // CSV file fields: stop_id,stop_code,stop_name,stop_lat,stop_lon,zone_id
     var csvFile = 'tests/stops.txt';
     
     var keyFields = ['stop_id'];
     var selFields = ['stop_id','stop_code','stop_name',
-    		 'stop_lat','stop_lon','zone_id'];
+    		 'stop_lat','stop_lon'];
     
     try {
-        var csv2dict = new Csv-dict({
+        var csvDict = new CsvDict({
     	tblName     : 'Stops',
     	tblDescr    : 'Train stops',
     	csvPath     : csvFile,
     	keyFields   : keyFields,
     	selFields   : selFields,
-    	delim       : ""
+    	delim       : ","
         });
     } catch (e) {
-        console.log("Failed to instantiate the Csv2dict. ");
+        console.log("Failed to instantiate the CsvDict. ");
         console.log("Error: %s", e);
         process.exit(1);
     }
     
-    csv2dict.on('tblLoaded', report);
+    csvDict.on('tblLoaded', report);
     
     function report(event) {
         console.log("Table named '%s' is loaded", event);
-        var tblKeys = csv2dict.tblKeys();
+        var tblKeys = csvDict.tblKeys();
         var keyCount = tblKeys.length;
         console.log("%d Keys: %s", keyCount, tblKeys.join(", "));
-        console.log(JSON.stringify(csv2dict.data, null, 2));
+        console.log(JSON.stringify(csvDict.data, null, 2));
     }
-    
-
