@@ -146,6 +146,50 @@ function CsvDict(params) {
 
 CsvDict.prototype = Object.create(EventEmitter.prototype);
 
+// Returns an array containing the keys of the csv-dict data
 CsvDict.prototype.tblKeys = function() {
     return Object.getOwnPropertyNames(this.data);
 };
+
+// Returns an array of arrays containing selected fields from selected
+// records
+CsvDict.prototype.valuesForKeys = function(obj) {
+    var k, f;
+    if (typeof obj === 'object') {
+	k = obj.keys   ;
+	f = obj.fields ;
+    }
+
+    // Supply missing args ... convert to arrays if necessary
+    var keys, fields;
+    if (typeof(k) === 'undefined' ) {
+	keys = this.tblKeys();
+    } else if (Array.isArray(k)) { keys = k }  else  { keys = [k] }
+
+    if (typeof(f) === 'undefined' ) {
+	fields = this.selFields;
+    } else if (Array.isArray(f)) { fields = f } else { fields = [f] }
+	
+    var recs = [];  // to be returned
+
+    keys.forEach((k) => {
+	var record = this.data[k];
+	if (record) {   // k is valid property of csv-dict
+	    var values = [];
+	    values.push(k);
+	    fields.forEach((f)=>{
+		var v = record[f];
+		values.push( typeof(v) === 'undefined' ? '' : v );
+	    });
+	    recs.push(values);
+	}
+    });
+    return recs;
+}
+
+// Returns selected fields of every record
+CsvDict.prototype.values = function(f) {
+    return this.valuesForKeys({fields : f });
+}
+
+
