@@ -105,7 +105,7 @@ Retrieves values for some of the fields of every line in the CSV file.
 Can be called with no arguments, with one field name (string), or an
 array of field names.  Returns array of arrays, one for each data line
 in the CSV file, containing for each line the values of every field
-or, if a field name or array of field names ispassed as sole argument,
+or, if a field name or array of field names is passed as sole argument,
 the values of the specified fields.
 
     USAGE:
@@ -116,7 +116,7 @@ the values of the specified fields.
 ### valuesForKeys()
 
 Retrieves values for selected/all fields of selected/all lines in the
-CSV file.  Can be called with no arguments or with a FS object
+CSV file.  Can be called with no arguments or with a JS object
 containing one/both of the following properties:
 
   - keys - one key or array of keys
