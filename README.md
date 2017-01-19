@@ -116,16 +116,19 @@ the values of the specified fields.
 ### valuesForKeys()
 
 Retrieves values for selected/all fields of selected/all lines in the
-CSV file.  Can be called with no arguments or with a FS object containing one/both of the following properties:
+CSV file.  Can be called with no arguments or with a FS object
+containing one/both of the following properties:
 
-   - keys - one key or array of keys
-   - fields - one field name or an array of field names
+  - keys - one key or array of keys
+  - fields - one field name or an array of field names
 
-The keys property of the argument object specifies which CSV lines to return.  The fields property of the argument object specifies the fields whose values are to be returned.
+The keys property of the argument object specifies which CSV lines to
+return.  The fields property of the argument object specifies the
+fields whose values are to be returned.
 
 
     USAGE:
-      var valArray = csvDict.valuesForKeys()   # returns all value for all fields
+      var valArray = csvDict.valuesForKeys()   # returns all values for all fields
       var valArray = csvDict.values({keys : <key> | [ <key1>, <key2>, ..]}
       var valArray = csvDict.values({
                fields : <field name> | [ <field namne1>, <field name2>, ..]
