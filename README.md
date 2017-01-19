@@ -35,6 +35,8 @@ a (sort of) database table to represent a small-ish CSV file.
         delim      = ','                         // defaults to comma
 	});
 
+
+
 The module's constructor function accepts arguments represented as
 properties of a single object.
 
@@ -94,3 +96,42 @@ the value of that field in the line.
         console.log("%d Keys: %s", keyCount, tblKeys.join(", "));
         console.log(JSON.stringify(csvDict.data, null, 2));
     }
+
+## Methods
+
+### values()
+
+Retrieves values for some of the fields of every line in the CSV file.
+Can be called with no arguments, with one field name (string), or an
+array of field names.  Returns array of arrays, one for each data line
+in the CSV file, containing for each line the values of every field
+or, if a field name or array of field names ispassed as sole argument,
+the values of the specified fields.
+
+    USAGE:
+      var valArray = csvDict.values()   # returns value for all fields
+      var valArray = csvDict.values(<field name>)
+      var valArray = csvDict.values([<field name1>, <field name2>, ...])
+
+### valuesForKeys()
+
+Retrieves values for selected/all fields of selected/all lines in the
+CSV file.  Can be called with no arguments or with a FS object containing one/both of the following properties:
+
+   - keys - one key or array of keys
+   - fields - one field name or an array of field names
+
+The keys property of the argument object specifies which CSV lines to return.  The fields property of the argument object specifies the fields whose values are to be returned.
+
+
+    USAGE:
+      var valArray = csvDict.valuesForKeys()   # returns all value for all fields
+      var valArray = csvDict.values({keys : <key> | [ <key1>, <key2>, ..]}
+      var valArray = csvDict.values({
+               fields : <field name> | [ <field namne1>, <field name2>, ..]
+	       }
+      var valArray = csvDict.values({
+               keys : <key> | [ <key1>, <key2>, ..],
+               fields : <field name> | [ <field namne1>, <field name2>, ..]
+	       }
+
