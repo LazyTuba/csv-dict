@@ -2,12 +2,12 @@
 
 ## Description
 
-Some Node modules represent a CSV file as an ARRAY of javascript (JS)
-objects.  This module represents a CSV file as a DICTIONARY of JS
-objects.  It reads a CSV file and returns a single JS 'object of
-objects' where each line of the CSV file is represented as a named
-property of the returned object.  This object of objects can serve as
-a (sort of) database table to represent a small-ish CSV file.
+Some Node modules in this space represent a CSV file as an ARRAY of
+javascript (JS) objects.  This module represents a CSV file as a
+DICTIONARY of JS objects.  It reads a CSV file and returns a single JS
+'object of objects' where each line of the CSV file is represented as
+a named property of the returned object.  This object of objects can
+serve as a (sort of) database table to represent a small-ish CSV file.
 
 ## Constraints
 
@@ -38,12 +38,12 @@ a (sort of) database table to represent a small-ish CSV file.
 
 
 The module's constructor function accepts arguments represented as
-properties of a single object.
+properties of an object.
 
 The "keyFields" argument is an array of one/more field name(s) (a
-subset of values in first line of CSV file).  The field(s) in the
+subset of the values in the first line of CSV file).  The field(s) in the
 keyFields array specify the fields containing values which form, for
-each of the succeeding data lines, the a 'key' unique among all lines
+each of the succeeding data lines, a 'key' unique among all lines
 of the CSV file, and which is used to derive the name of the property
 that will represent that line.
 
