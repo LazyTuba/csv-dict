@@ -75,6 +75,7 @@ is the value of that field in the line.
     // CSV file fields: stop_id,stop_code,stop_name,stop_lat,stop_lon,zone_id
     var csvFile = 'tests/stops.txt';
     
+    var numFields = ['_id','stop_id','stop_code','stop_lat','stop_lon','zone_id'];
     var keyFields = ['stop_id'];
     var selFields = ['stop_id','stop_code','stop_name',
     		 'stop_lat','stop_lon'];
@@ -84,6 +85,7 @@ is the value of that field in the line.
     	tblName     : 'Stops',
     	tblDescr    : 'Train stops',
     	csvPath     : csvFile,
+	numFields   : numFields,
     	keyFields   : keyFields,
     	selFields   : selFields,
     	delim       : ","
