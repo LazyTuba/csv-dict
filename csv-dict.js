@@ -45,6 +45,7 @@ function _indicesOfStrings(list, strings) {
 var _makeJsonObjCB = function(obj) {
     var tblName      = obj.tblName;
     var tblDescr     = obj.tblDescr;
+    var numFields    = obj.numFields;  // names of fields to be parsed as numbers
     var keyFields    = obj.keyFields;
     var selFields    = obj.selFields;
     var delim        = obj.delim;
@@ -61,22 +62,31 @@ var _makeJsonObjCB = function(obj) {
 	var headerFields = _fields(lines[0], delim);
 	var tblObj = new Object();  // object created by this CB to represent
                                     // the csv file
-	
+
 	// get the indices of the selection and key fields
+	numFields = numFields ? numFields : [];  // defaults to []
 	selFields = selFields ? selFields : headerFields;  // defaults to "all"
 	keyFields = keyFields ? keyFields : headerFields[0]; // defaults to col 1
+ 	var numIndices   = _indicesOfStrings(headerFields, numFields);
 	var keyIndices   = _indicesOfStrings(headerFields, keyFields);
 	var selIndices   = _indicesOfStrings(headerFields, selFields);
 
 	// now process the lines of the csv file
 	for (var i = 1; i < lines.length; i++) {
 	    var fields = _fields(lines[i], delim);
+
+	    // replace number strings with numbers if numFields specified
+	    for (var nIdx = 0; nIdx < numIndices.length; nIdx++) {
+		var numIdx = numIndices[nIdx];
+		fields[numIdx] = Number(fields[numIdx]);
+	    }
 	    
 	    var rowKeyArr    = [];
 	    for (var j = 0; j < keyIndices.length; j++) {
 		var keyIdx = keyIndices[j];
 		rowKeyArr.push(fields[keyIdx]);
 	    }
+
 	    var rowKey = rowKeyArr.join('.');
 	    
 	    var rowObj = {};
@@ -86,7 +96,9 @@ var _makeJsonObjCB = function(obj) {
 		var value = fields[selIdx];        // field value
 		rowObj[name] = value;
 	    }
+
 	    tblObj[rowKey] = rowObj;
+	    
 	}
 	
 	obj.data = tblObj;
@@ -133,6 +145,7 @@ function CsvDict(params) {
     this.tblName     = params.tblName || csvFileName;
     this.tblDescr    = params.tblDescr;
     this.csvPath     = params.csvPath;      // required
+    this.numFields   = params.numFields;    // defaults to field 1
     this.keyFields   = params.keyFields;    // defaults to field 1
     this.selFields   = params.selFields;    // defaults to all fields
     this.delim       = params.delim || ',';

@@ -7,8 +7,9 @@ var CsvDict = require('../csv-dict.js');
 // stop_id,stop_code,stop_name,stop_lat,stop_lon,zone_id
 var csvFile = 'tests/stops.txt';
 
+var numFields = ['_id','stop_id','stop_code','stop_lat','stop_lon','zone_id'];
 var keyFields = ['stop_id'];
-var selFields = ['stop_id','stop_code','stop_name',
+var selFields = ['_id','stop_id','stop_code','stop_name',
 		 'stop_lat','stop_lon'];
 
 try {
@@ -16,6 +17,7 @@ try {
 	tblName     : 'Stops',
 	tblDescr    : 'Train stops',
 	csvPath     : csvFile,
+	numFields   : numFields,
 	keyFields   : keyFields,
 	selFields   : selFields,
 	delim       : ","
@@ -29,7 +31,7 @@ try {
 csvDict.on('tblLoaded', report);
 
 function report(event) {
-    console.log(" i) Table named '%s' is loaded", event);
+    console.log(" 1) Table named '%s' is loaded", event);
     var tblKeys = csvDict.tblKeys();
     var keyCount = tblKeys.length;
     console.log(" 2) %d Keys: %s", keyCount, tblKeys.join(", "));

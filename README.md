@@ -30,6 +30,7 @@ serve as a (sort of) database table to represent a small-ish CSV file.
         tblName    = <string>,                   // deafaults to the file name
         tblDescr   = <string>,                   // nice to have..future use
         csvPath    = <string>,                   // required
+        numFields  = [<field1>,..],              // names of numerical fields - defaults to []
         keyFields  = [<field1>,..],              // defaults to field #1
         selFields  = [<field1>, <field2>, ...],  // defaults to all fields
         delim      = ','                         // defaults to comma
@@ -39,6 +40,12 @@ serve as a (sort of) database table to represent a small-ish CSV file.
 
 The module's constructor function accepts arguments represented as
 properties of an object.
+
+The "numFields" argument is an array of one/more field name(s) (a
+subset of the values in the first line of CSV file).  The field(s) in
+the numFields array specify the fields containing numerical values.
+The values for these fields will be stored in the csv-dict object as
+numbers (as opposed to strings).
 
 The "keyFields" argument is an array of one/more field name(s) (a
 subset of the values in the first line of CSV file).  The field(s) in the
@@ -54,12 +61,12 @@ fields.
 
 Each data line of the CSV file is represented in the returned object
 as a property, where the property name is the line's 'key' (the
-concatenation of the value(s) of that line's key field(s)) and the
-property value is a JS 'row' object.  The 'row object' for each line
-is itself an object with properties corresponding to all, or a subset
-(specified by selFields) of, the CSV file's fields, where each
-property's name is one of the field names and the property value is
-the value of that field in the line.
+*string* concatenation of the value(s) of that line's key field(s))
+and the property value is a JS 'row' object.  The 'row object' for
+each line is itself an object with properties corresponding to all, or
+a subset (specified by selFields) of, the CSV file's fields, where
+each property's name is one of the field names and the property value
+is the value of that field in the line.
 
 ## Usage Example
 
